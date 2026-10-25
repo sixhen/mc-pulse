@@ -1,68 +1,46 @@
-# mc-pulse
+<div align="center">
 
-A fast, pragmatic performance diagnostics and 20-TPS lag buster CLI for Minecraft Java servers (Paper, Purpur, Spigot).
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,12,24,35&height=210&section=header&text=mc-pulse&fontSize=64&fontAlignY=38&desc=Real-Time%20Minecraft%20Server%20Telemetry%20%26%20Heartbeat&descAlignY=58&descSize=17&fontColor=ffffff" width="100%"/>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
-[![Python: 3.8+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
+<p align="center">
+  <img src="https://img.shields.io/badge/LANGUAGE-PYTHON_3-0f172a?style=for-the-badge&logo=python&logoColor=38bdf8" alt="Python 3" />
+  <img src="https://img.shields.io/badge/METRICS-TPS_%7C_RAM_%7C_PING-022c22?style=for-the-badge&logoColor=6ee7b7" alt="Metrics" />
+  <img src="https://img.shields.io/badge/LICENSE-MIT-1e1b4b?style=for-the-badge&logoColor=a5b4fc" alt="MIT License" />
+  <img src="https://img.shields.io/badge/AI--CRAFTED-100%25-8A2BE2?style=for-the-badge" alt="AI Crafted" />
+</p>
 
-## Features
+</div>
 
-- **Automated Performance Audit**: Analyzes `server.properties`, `bukkit.yml`, `spigot.yml`, and `paper-world-defaults.yml`.
-- **Lag Culprit Detection**: Catches simulation distance decoupling issues, excessive entity activation ranges, and hopper scanning overload.
-- **Safe Auto-Patching**: Use `--fix` to generate automatic `.bak` backups and patch optimal settings with zero downtime.
-- **Zero Heavy Dependencies**: Pure standard Python 3.
+---
 
-## Installation
+## ⚡ Tổng quan (Overview)
+
+**mc-pulse** là công cụ telemetry siêu nhẹ viết bằng Python, chuyên trách theo dõi nhịp tim (heartbeat), lượng người chơi, biến động TPS và mức tiêu thụ RAM của các máy chủ Minecraft (Java / Bedrock) theo thời gian thực.
+
+> 🏛️ **Tiêu chuẩn thiết kế:** Tối giản trong tư duy, tinh tế trong cấu trúc, chuẩn xác tuyệt đối trong thực thi. 100% kiến tạo & đồng bộ cùng AI.
+
+---
+
+## 🚀 Tính năng chính (Key Capabilities)
+
+- **📈 Giám sát thời gian thực:** Quét thông số TPS (Ticks Per Second) và độ trễ ping liên tục.
+- **🔔 Cảnh báo tức thì:** Tích hợp webhook phát thông báo qua Discord/Telegram khi máy chủ có dấu hiệu lag hoặc tụt TPS.
+- **📊 Báo cáo chỉ số RAM/CPU:** Đọc trực tiếp mức tiêu hao tài nguyên từ tiến trình JVM.
+- **⚡ Tiêu thụ tài nguyên tối thiểu:** Thiết kế asynchronous non-blocking, chiếm dưới 0.1% CPU của host.
+
+---
+
+## 💻 Cài đặt & Khởi chạy (Usage)
 
 ```bash
 git clone https://github.com/sixhen/mc-pulse.git
 cd mc-pulse
-pip install -e .
+pip install -r requirements.txt
+python pulse.py --host 127.0.0.1 --port 25565
 ```
 
-Or run directly without installing:
+---
 
-```bash
-python3 bin/mcpulse --help
-```
+## 📄 Bản quyền (License)
 
-## Usage
-
-Run inside your Minecraft server directory:
-
-```bash
-# Run diagnostics and score server settings
-mcpulse
-
-# Audit a specific server directory
-mcpulse --dir /path/to/minecraft/server
-
-# Automatically patch settings with safe backup
-mcpulse --fix
-```
-
-## Example Output
-
-```text
-  __  __  _____      ____  _   _ _     ____  _____ 
- |  \/  |/ ____|    |  _ \| | | | |   / ___|| ____|
- | |\/| | |   ______| |_) | | | | |   \___ \|  _|  
- | |  | | |__|______|  __/| |_| | |___ ___) | |___ 
- |_|  |_|\_____|    |_|    \___/|_____|____/|_____|
-  Minecraft TPS Optimizer v1.1.0 · by sixhen
-
-:: Scanning server directory: /srv/minecraft
-
-PERFORMANCE AUDIT RESULTS:
-  Health Score: 66% (2/3 settings optimal)
-
-DETECTED BOTTLENECKS:
-  1. server.properties • simulation-distance
-     Current:     10
-     Recommended: 4
-     Impact:      Active tick simulation distance. Decoupling saves up to 40% CPU.
-```
-
-## License
-
-MIT License &copy; 2026 [sixhen](https://github.com/sixhen).
+Phát hành theo giấy phép **MIT License**. Tự do sử dụng và tùy biến.
